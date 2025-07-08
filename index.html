@@ -1,21 +1,62 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>My Learning Projects</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    .toggle {
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+    }
+    .nested {
+      margin-left: 20px;
+      display: none;
+    }
+    .active > .nested {
+      display: block;
+    }
+    .arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+      margin-right: 6px;
+    }
+    .arrow.down {
+      transform: rotate(90deg);
+    }
+  </style>
 </head>
 <body>
   <h1>🚀 My Web Dev Learning Showcase</h1>
+
   <ul>
-    <li><a href="html/index.html" target="_blank">HTML Demo</a>
-            <li><a href="html/html-text-formatting/" target="_blank">HTML Text Formatting</a></li>
+    <li class="toggle">
+      <span class="arrow">▶</span> <a href="html/index.html" target="_blank">HTML Demo</a>
+      <ul class="nested">
+        <li><a href="html/html-text-formatting/" target="_blank">HTML Text Formatting</a></li>
+        <!-- Add more sub-projects here -->
+      </ul>
     </li>
 
     <li><a href="css/index.html" target="_blank">CSS Demo</a></li>
     <li><a href="javascript/index.html" target="_blank">JavaScript Demo</a></li>
-    <ul>
-</ul>
-
   </ul>
+
+  <script>
+    document.querySelectorAll('.toggle').forEach(item => {
+      item.addEventListener('click', function () {
+        this.classList.toggle('active');
+        const arrow = this.querySelector('.arrow');
+        if (arrow) arrow.classList.toggle('down');
+      });
+    });
+  </script>
 </body>
 </html>
